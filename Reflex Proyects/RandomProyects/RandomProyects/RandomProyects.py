@@ -17,6 +17,7 @@ def index() -> rx.Component:
             rx.heading("Examples", font_size="1.5em"),
             rx.link('Counter', href='/counter'),
             rx.link('Rick And Morty', href='/rick_and_morty'),
+            rx.link('Login', href='/login'),
             )
         )
     )
