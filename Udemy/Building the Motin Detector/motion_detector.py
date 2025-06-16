@@ -21,7 +21,7 @@ while True:
   thresh_frame=cv2.threshold(delta_frame, 30, 255, cv2.THRESH_BINARY)[1]
   thresh_frame=cv2.dilate(thresh_frame, None, iterations=2)
 
-  (_,cnts, _) = cv2.findContours(thresh_frame.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+  (cnts,_) = cv2.findContours(thresh_frame.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
   for contour in cnts:
     if cv2.contourArea(contour) < 10000:
@@ -53,7 +53,7 @@ print(status_list)
 print(times)
 
 for i in range(0, len(times),2):
-  df = df.append({"Start": times[i], "End": times[i+1]}, ignore_index=True)
+  df = df._append({"Start": times[i], "End": times[i+1]}, ignore_index=True)
 
 df.to_csv("Times.csv")
 
