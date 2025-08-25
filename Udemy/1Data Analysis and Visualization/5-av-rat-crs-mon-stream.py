@@ -12,7 +12,7 @@ print(month_average_crs)
 
 chart_def = """
 {
-  chart: {
+    chart: {
         type: 'streamgraph',
         marginBottom: 30,
         zooming: {
@@ -388,18 +388,18 @@ chart_def = """
 """
 
 def app():
-  
-  wp = jp.QuasarPage()
-  h1 = jp.QDiv(a=wp, text="Analysis of Course Reviews", classes="text-h3 text-center q-pa-md")
-  p1 = jp.QDiv(a=wp, text="These graphs represent course review analysis")
+    wp = jp.QuasarPage()
+    h1 = jp.QDiv(a=wp, text="Analysis of Course Reviews", classes="text-h3 text-center q-pa-md")
+    p1 = jp.QDiv(a=wp, text="These graphs represent course review analysis")
 
-  hc = jp.HighCharts(a=wp, options = chart_def)
-  hc.options.xAxis.categories = list(month_average_crs.index)
+    hc = jp.HighCharts(a=wp, options = chart_def)
 
-  hc_data = [{"name":v1, "data":[v2 for v2 in month_average_crs[v1]]} for v1 in month_average_crs.columns]
+    hc.options.xAxis.categories = list(month_average_crs.index)
 
-  hc.options.series = hc_data
+    hc_data = [{"name":v1, "data":[v2 for v2 in month_average_crs[v1]]} for v1 in month_average_crs.columns]
 
-  return wp
+    hc.options.series = hc_data
+
+    return wp
 
 jp.justpy(app)
