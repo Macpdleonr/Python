@@ -1,8 +1,8 @@
-import sqlite3
+import psycopg2
 
 
 def create_table():
-  conn = sqlite3.connect('lite.db')
+  conn = psycopg2.connect('lite.db')
 
   cur = conn.cursor()
 
@@ -12,7 +12,7 @@ def create_table():
   conn.close()
 
 def insert(item, quantity, price):
-  conn = sqlite3.connect('lite.db')
+  conn = psycopg2.connect('lite.db')
 
   cur = conn.cursor()
 
@@ -24,7 +24,7 @@ def insert(item, quantity, price):
 # insert("Water Glass", 10, 5)
 
 def view():
-  conn = sqlite3.connect('lite.db')
+  conn = psycopg2.connect('lite.db')
 
   cur = conn.cursor()
 
@@ -35,7 +35,7 @@ def view():
   return rows
 
 def delete(item):
-  conn = sqlite3.connect('lite.db')
+  conn = psycopg2.connect('lite.db')
 
   cur = conn.cursor()
 
@@ -46,7 +46,7 @@ def delete(item):
 # delete("Water Glass")
 
 def update(quantity,price,item):
-  conn = sqlite3.connect('lite.db')
+  conn = psycopg2.connect('lite.db')
 
   cur = conn.cursor()
 
