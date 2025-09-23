@@ -2,7 +2,7 @@ import psycopg2
 
 
 def create_table():
-  conn = psycopg2.connect('lite.db')
+  conn = psycopg2.connect("dbname='database1' user='postgres' password='1234' host='localhost' port='5417'")
 
   cur = conn.cursor()
 
@@ -12,11 +12,11 @@ def create_table():
   conn.close()
 
 def insert(item, quantity, price):
-  conn = psycopg2.connect('lite.db')
+  conn = psycopg2.connect("dbname='database1' user='postgres' password='1234' host='localhost' port='5417'")
 
   cur = conn.cursor()
 
-  cur.execute("INSERT INTO STORE VALUES(?,?,?)",(item, quantity, price))
+  cur.execute("INSERT INTO STORE VALUES('%s','%s','%s')" % (item, quantity, price))
 
   conn.commit()
   conn.close()
@@ -24,7 +24,7 @@ def insert(item, quantity, price):
 # insert("Water Glass", 10, 5)
 
 def view():
-  conn = psycopg2.connect('lite.db')
+  conn = psycopg2.connect("dbname='database1' user='postgres' password='1234' host='localhost' port='5417'")
 
   cur = conn.cursor()
 
@@ -35,7 +35,7 @@ def view():
   return rows
 
 def delete(item):
-  conn = psycopg2.connect('lite.db')
+  conn = psycopg2.connect("dbname='database1' user='postgres' password='1234' host='localhost' port='5417'")
 
   cur = conn.cursor()
 
@@ -46,7 +46,7 @@ def delete(item):
 # delete("Water Glass")
 
 def update(quantity,price,item):
-  conn = psycopg2.connect('lite.db')
+  conn = psycopg2.connect("dbname='database1' user='postgres' password='1234' host='localhost' port='5417'")
 
   cur = conn.cursor()
 
@@ -55,4 +55,5 @@ def update(quantity,price,item):
   conn.close()
 
 update(11,6,"Water Glass")
+insert("Apple", 10, 15)
 print(view())
