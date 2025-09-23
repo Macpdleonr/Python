@@ -39,7 +39,7 @@ def delete(item):
 
   cur = conn.cursor()
 
-  cur.execute("DELETE FROM STORE WHERE item=?",(item,))
+  cur.execute("DELETE FROM STORE WHERE item=%s",(item,))
   conn.commit()
   conn.close()
 
@@ -50,7 +50,7 @@ def update(quantity,price,item):
 
   cur = conn.cursor()
 
-  cur.execute("UPDATE STORE SET quantity=?, price=? WHERE item=?",(quantity,price,item))
+  cur.execute("UPDATE STORE SET quantity=%s, price=%s WHERE item=%s",(quantity,price,item))
   conn.commit()
   conn.close()
 
