@@ -25,6 +25,7 @@ def search_command():
     list1.insert(END, row)
 
 def add_command():
+  print(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
   backend.insert(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
   list1.delete(0, END)
   list1.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
@@ -85,13 +86,13 @@ b1.grid(row=2, column=3)
 b2 = Button(window, text="Search entry",  width=12, command=search_command)
 b2.grid(row=3, column=3)
 
-b3 = Button(window, text="Add entry",  width=12, command=add_command())
+b3 = Button(window, text="Add entry",  width=12, command=add_command)
 b3.grid(row=4, column=3)
 
-b4 = Button(window, text="Update selected",  width=12, command=update_command())
+b4 = Button(window, text="Update selected",  width=12, command=update_command)
 b4.grid(row=5, column=3)
 
-b5 = Button(window, text="Delete selected",  width=12, command=delete_command())
+b5 = Button(window, text="Delete selected",  width=12, command=delete_command)
 b5.grid(row=6, column=3)
 
 b6 = Button(window, text="Close",  width=12, command=window.destroy)
