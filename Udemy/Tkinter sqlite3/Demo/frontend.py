@@ -1,5 +1,5 @@
 from tkinter import *
-import backend
+from backend import Database
 
 def get_selected_row(event):
   global selected_tuple
