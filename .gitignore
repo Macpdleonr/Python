@@ -16,3 +16,4 @@ Udemy/Tkinter sqlite3/Demo/frontend.spec
 
 * __pycache__/
 *.pyc
+*.toc
