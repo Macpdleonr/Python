@@ -1,10 +1,12 @@
-from pathlib import Path
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.animation import Animation
+from hoverable import HoverBehavior
 
 import json, glob, random
 from datetime import datetime
+from pathlib import Path
 
 Builder.load_file('design.kv')
 
