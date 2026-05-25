@@ -16,3 +16,16 @@ xlrd
 twine
 requests
 rich
+blinker
+click
+flask-sqlalchemy
+greenlet
+itsdangerous
+jinja2
+markupsafe
+playwright
+psycopg2-binary
+pyee
+sqlalchemy
+typing_extensions
+werkzeug
