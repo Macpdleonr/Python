@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from flask_sqlalchemy import SQLAlchemy
 from send_email import send_email
 from sqlalchemy.sql import func
+from werkzeug import secure_filename
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://test12345:app9flask@test12345.mysql.pythonanywhere-services.com/test12345$height_collector'
@@ -23,7 +24,20 @@ def index():
 
 @app.route('/success', methods=['POST'])
 def success():
+  global file
   if request.method == 'POST':
+
+    file = request.files['file']
+    file.save(secure_filename("uploaded_"+file.filename))
+
+    with open("uploaded_"+file.filename, 'a') as file:
+      file.write("This was added later")
+
+    content = file.read().decode('utf-8')
+
+    print(content)
+    print(file)
+    print(type(file))
 
     email = request.form['email_name']
     height = request.form['height_name']
@@ -45,8 +59,14 @@ def success():
     
     return render_template(
       'index.html',
+      btn="download.html",
       text="Seems like we've got something from that email address already!"
       )
+  
+@app.route('/download')
+def download():
+  return send_file("uploaded_"+file.filename, attachment_filename="yourfile.csv", as_attachment=True)
+
 
 if __name__ == '__main__':
   app.debug=True
