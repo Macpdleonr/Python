@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <h1>{{object.title}}</h1>
-    <p>{{object.content}}</p>
-    <p>{{object.author}}</p>
+    <h1>{% object.title %} {{object.title}} {% endblock blog_title %}</h1>
+    <p>{% object.content %} {{object.content}} {% endblock blog_content %}</p>
+    <p>{% object.author %} {{object.author}} {% endblock blog_author %}</p>
   </body>
 </html>
